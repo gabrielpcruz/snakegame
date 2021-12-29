@@ -45,13 +45,29 @@ let Direction = (() => {
         Screen.draw(snake)
     }
 
+    let isVerticaly = (direction) => {
+        return direction === Direction.DOWN || direction === Direction.UP;
+    }
+
+    let isHorizontaly = (direction) => {
+        return direction === Direction.LEFT || direction === Direction.RIGHT;
+    }
+
+    let isSameDirection = (direction, oldDirection) => {
+        return (Direction.isVerticaly(direction) && Direction.isVerticaly(oldDirection)) ||
+            (Direction.isHorizontaly(direction) && Direction.isHorizontaly(oldDirection));
+    }
+
     return {
         getDirection: getDirection,
         isAValidDirection: isAValidDirection,
+        isVerticaly: isVerticaly,
+        isHorizontaly: isHorizontaly,
+        isSameDirection: isSameDirection,
         move: move,
-        UP:UP,
-        DOWN:DOWN,
-        RIGHT:RIGHT,
-        LEFT:LEFT,
+        UP: UP,
+        DOWN: DOWN,
+        RIGHT: RIGHT,
+        LEFT: LEFT,
     }
 })();
