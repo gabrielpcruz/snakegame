@@ -42,7 +42,7 @@ let Direction = (() => {
     }
 
     let move = (snake) => {
-        Screen.draw(snake)
+        Screen.drawSnake(snake)
     }
 
     let isVerticaly = (direction) => {
@@ -54,8 +54,7 @@ let Direction = (() => {
     }
 
     let isSameDirection = (direction, oldDirection) => {
-        return (Direction.isVerticaly(direction) && Direction.isVerticaly(oldDirection)) ||
-            (Direction.isHorizontaly(direction) && Direction.isHorizontaly(oldDirection));
+        return (Direction.isVerticaly(direction) && Direction.isVerticaly(oldDirection));
     }
 
     return {

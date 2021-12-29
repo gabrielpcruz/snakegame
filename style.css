@@ -7,5 +7,14 @@
     width: 500px;
     height: 500px;
     border: 1px solid;
-    margin: 15px;
+    margin: auto auto;
+}
+
+#panel-screen {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+#panel-screen #resume{
+    text-align: center;
 }

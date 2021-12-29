@@ -9,38 +9,84 @@ let Screen = (() => {
         return screenObject;
     }
 
-    let draw = (cordinates) => {
+    let clearOldPosition = (cordinates) => {
+        screenObject.clearRect(
+            cordinates.oldCordinateX,
+            cordinates.oldCordinateY,
+            cordinates.width,
+            cordinates.height
+        );
+    }
+
+    let draw = (
+        cordinateX,
+        cordinateY,
+        width,
+        height,
+    ) => {
         let screen = Screen.screen();
+
         screen.beginPath();
 
-        // Walk to sides
-        let width = 2;
-        let height = 2;
+        screen.moveTo(
+            cordinateX,
+            cordinateY
+        );
 
-        let direction = cordinates.direction;
-
-        if (Direction.isVerticaly(direction)) {
-            width = 2;
-            height = 2;
-        }
-
-        if (cordinates.direction !== cordinates.oldDirection) {
-            clearOldPosition(cordinates, width, height)
-        }
-
-        screen.moveTo(cordinates.oldCordinateX, cordinates.oldCordinateY);
-        screen.fillRect(cordinates.cordinateX, cordinates.cordinateY, width, height);
-
-        setTimeout(() => {
-            screen.clearRect(cordinates.oldCordinateX, cordinates.oldCordinateY, height, width);
-        }, cordinates.speed - (cordinates.speed * 0.5));
+        screen.fillRect(
+            cordinateX,
+            cordinateY,
+            width,
+            height
+        );
 
         screen.fill();
     }
 
+    let drawSnake = (cordinates) => {
 
-    let clearOldPosition = (cordinates, width, height) => {
-        screen.clearRect(cordinates.oldCordinateX, cordinates.oldCordinateY, width, height);
+        let cordinateX = cordinates.cordinateX;
+        let cordinateY = cordinates.cordinateY;
+        let width = cordinates.width;
+        let height = cordinates.height;
+
+        clearOldPosition(cordinates)
+
+
+        if (Direction.isVerticaly(cordinates.direction)) {
+            width = cordinates.height
+            height = cordinates.width
+        }
+
+
+        // console.log(cordinates.direction)
+        // console.log(cordinates.oldDirection)
+
+        console.log(
+            Direction.isSameDirection(cordinates.direction, cordinates.oldDirection)
+        )
+
+
+
+
+        draw(
+            cordinateX,
+            cordinateY,
+            width,
+            height,
+        );
+
+
+
+        setTimeout(() => {
+            screenObject.clearRect(
+                cordinates.oldCordinateX,
+                cordinates.oldCordinateY,
+                cordinates.width,
+                cordinates.height
+            );
+
+        }, cordinates.speed - (cordinates.speed * 0.5));
     }
 
     return {
@@ -49,6 +95,7 @@ let Screen = (() => {
         },
         screen: screen,
         draw: draw,
+        drawSnake: drawSnake,
     }
 })();
 

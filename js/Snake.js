@@ -1,6 +1,8 @@
 let Snake = (() => {
     let snake = {
-        length: 1,
+        length: 4,
+        width: 4,
+        height: 2,
         oldCordinateY: 2,
         oldCordinateX: 2,
         cordinateY: 2,
@@ -15,6 +17,7 @@ let Snake = (() => {
             Direction.isAValidDirection(direction) &&
             !Direction.isSameDirection(direction, snake.direction)
         ) {
+            snake.oldDirection = snake.direction;
             snake.direction = direction;
         }
     }
@@ -22,7 +25,6 @@ let Snake = (() => {
     let updatePosition = () => {
         snake.oldCordinateX = snake.cordinateX;
         snake.oldCordinateY = snake.cordinateY;
-        snake.oldDirection = snake.direction;
 
         if (snake.direction === Direction.RIGHT) {
             snake.cordinateX = (snake.cordinateX + 2)

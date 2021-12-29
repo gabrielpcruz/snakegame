@@ -8,7 +8,16 @@
 </head>
 <body>
 
-<canvas id="screen" width="150" height="150"></canvas>
+<div id="panel-screen">
+    <div id="resume">
+        Points: <span id="points">0</span>
+    </div>
+
+    <canvas id="screen" width="150" height="150"></canvas>
+
+</div>
+
+
 
 <!-- Audio Section -->
 <audio id="snake_walk" autoplay src="sources/snake_walk.wav"></audio>
@@ -19,8 +28,10 @@
 
 <script src="js/Screen.js"></script>
 <script src="js/Sound.js"></script>
+<script src="js/SnakeMath.js"></script>
 <script src="js/Direction.js"></script>
 <script src="js/Snake.js"></script>
+<script src="js/SnakeFood.js"></script>
 <script src="js/Game.js"></script>
 </body>
 </html>
